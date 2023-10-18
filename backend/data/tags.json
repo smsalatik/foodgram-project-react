@@ -1,0 +1,5 @@
+[
+    {"id": 100, "name": "Завтрак", "color": "#1045C6", "slug": "break"},
+    {"id": 101, "name": "Обед", "color": "#C96B19", "slug": "dinner"},
+    {"id": 102, "name": "Ужин", "color": "#8476C5", "slug": "supper"}
+]
