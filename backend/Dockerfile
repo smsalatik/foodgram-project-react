@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt --no-cache-dir
 
+RUN pip install psycopg2-binary
+
 COPY . .
 
 CMD ["gunicorn", "foodgram.wsgi:application", "--bind", "0:7000" ]
