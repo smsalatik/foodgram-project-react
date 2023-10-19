@@ -1,18 +1,7 @@
 from django.contrib import admin
 
 from .models import (ShoppingCart, Favorite, Ingredient, IngredientsInRecipe,
-                     Recipe, Follow, Tag, User)
-
-
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    """Админ пользователей."""
-
-    list_display = ('id', 'email', 'username', 'first_name',
-                    'last_name', 'password')
-    search_fields = ('email', 'username', 'first_name',
-                     'last_name', 'password')
-    list_filter = ('email', 'username')
+                     Recipe, Tag)
 
 
 class RecipeIngredientAdmin(admin.StackedInline):
@@ -93,26 +82,6 @@ class IngredientAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'measurement_unit')
     search_fields = ('id', 'name', 'measurement_unit')
     list_filter = ('name',)
-
-
-@admin.register(Follow)
-class FollowAdmin(admin.ModelAdmin):
-    """Админ подписок."""
-
-    list_display = ('id', 'author', 'user',
-                    'email_user', 'email_author')
-    search_fields = ('author', 'user')
-    list_filter = ('author', 'user')
-
-    @admin.display(description='Почта подписчика')
-    def email_user(self, obj):
-        """Почта подписчика."""
-        return obj.user.email
-
-    @admin.display(description='Почта автора')
-    def email_author(self, obj):
-        """Почта автора."""
-        return obj.author.email
 
 
 @admin.register(Tag)

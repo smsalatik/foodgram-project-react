@@ -12,7 +12,8 @@ from rest_framework.viewsets import ModelViewSet
 
 from recipes.models import (ShoppingCart, Favorite, Ingredient,
                             IngredientsInRecipe,
-                            Recipe, Follow, Tag, User)
+                            Recipe, Tag)
+from users.models import Follow, User
 from .filters import FilterSearchForName, FilterRecipes
 
 from .pagination import LimitUserPagination

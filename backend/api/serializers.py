@@ -9,7 +9,8 @@ from rest_framework.validators import UniqueTogetherValidator
 from constants import MINIMUM_INGREDIENTS
 from recipes.models import (ShoppingCart, Favorite, Ingredient,
                             IngredientsInRecipe,
-                            Recipe, Follow, Tag, User)
+                            Recipe, Tag)
+from users.models import Follow, User
 
 
 class CustomUserSerializer(UserSerializer):

@@ -1,60 +1,11 @@
 from colorfield.fields import ColorField
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from api.validator import cooking_time_validator
+from users.models import User
 from constants import MAX_COLOR, MAX_LENGHT, MAX_LENGHT_TEXT
 
 from .validator import more_one
-
-
-class User(AbstractUser):
-    """Модель пользователя."""
-
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
-    USERNAME_FIELD = 'email'
-
-    email = models.EmailField(
-        verbose_name='Почта',
-        unique=True,
-        max_length=MAX_LENGHT,
-    )
-
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
-        ordering = ('id',)
-
-    def __str__(self):
-        return f'{self.username}'
-
-
-class Follow(models.Model):
-    """Модель Подписки."""
-
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        verbose_name='автор',
-        related_name='following'
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        verbose_name='Подписчик',
-        related_name='follower',
-
-    )
-
-    class Meta:
-        verbose_name = 'Подписка'
-        verbose_name_plural = 'Подписки'
-        constraints = [models.UniqueConstraint(
-            fields=['author', 'user'],
-            name='author_user')]
-
-    def __str__(self):
-        return f'{self.author}-{self.user}'
 
 
 class Tag(models.Model):
