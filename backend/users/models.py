@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 
 from constants import MAX_LENGHT, MAX_LENGHT_EMAIL
@@ -22,6 +23,7 @@ class User(AbstractUser):
         verbose_name='username',
         max_length=MAX_LENGHT,
         unique=True,
+        validators=(UnicodeUsernameValidator(), )
     )
 
     class Meta:
