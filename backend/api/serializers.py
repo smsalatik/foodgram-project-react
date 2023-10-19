@@ -21,7 +21,7 @@ class CustomUserSerializer(UserSerializer):
         """Получение значения подписки."""
         user = self.context.get('request').user
         return (user.is_authenticated
-                and obj.following.filter(subscriber=user).exists())
+                and obj.following.filter(user=user).exists())
 
     class Meta:
         model = User
@@ -135,7 +135,8 @@ class RecipeSerializer(serializers.ModelSerializer):
     def get_is_in_shopping_cart(self, obj):
         """Получаем значение, добавлен ли рецепт в корзину."""
         user = self.context.get('request').user
-        return user.is_authenticated and user.cart.filter(recipe=obj).exists()
+        return user.is_authenticated and user.shopping_cart.filter(
+            recipe=obj).exists()
 
     class Meta:
         model = Recipe
