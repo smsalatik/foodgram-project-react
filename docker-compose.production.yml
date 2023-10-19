@@ -1,0 +1,43 @@
+version: '3.3'
+volumes:
+  pg_data:
+  foodgram_static:
+  foodgram_media:
+
+services:
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    restart: always
+
+  backend:
+    image: msalat/foodgram_backend
+    volumes:
+      - foodgram_static:/app/static/
+      - foodgram_media:/app/media/
+    depends_on:
+      - db
+    env_file:
+      - .env
+    restart: always
+
+  frontend:
+    image: msalat/foodgram_frontend
+    command: cp -r /app/build/. /app/static/
+    volumes:
+     - foodgram_static:/app/static/
+
+  gateway:
+    image: msalat/foodgram_gateway
+    ports:
+      - "7000:80"
+    volumes:
+      - foodgram_static:/app/static/
+      - foodgram_media:/media/
+    depends_on:
+      - backend
+      - frontend
+    restart: always
