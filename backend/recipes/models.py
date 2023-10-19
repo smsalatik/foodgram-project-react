@@ -4,6 +4,7 @@ from django.db import models
 
 from api.validator import cooking_time_validator
 from constants import MAX_COLOR, MAX_LENGHT, MAX_LENGHT_TEXT
+
 from .validator import more_one
 
 
