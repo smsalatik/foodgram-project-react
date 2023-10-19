@@ -16,7 +16,6 @@ class UserAdmin(BaseUserAdmin):
     empty_value_display = '-пусто-'
 
 
-
 @admin.register(Follow)
 class FollowAdmin(admin.ModelAdmin):
     """Админ подписок."""
