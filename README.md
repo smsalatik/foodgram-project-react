@@ -67,10 +67,10 @@ docker compose -f docker-compose.yml exec backend cp -r /app/static_backend/. /b
 
 ```apache
 SECRET_KEY = 'my_secret_key'
-POSTGRES_DB=kitty
+POSTGRES_DB=user
 POSTGRES_USER=user
 POSTGRES_PASSWORD=password
-DB_NAME=kitty
+DB_NAME=user
 DB_HOST=db
 DB_PORT=5432 
 DEBUG=False
@@ -88,7 +88,9 @@ HOST                           # ip_address сервера
 USER                           # имя пользователя
 SSH_KEY                        # приватный ssh-ключ (cat ~/.ssh/id_rsa)
 PASSPHRASE                     # кодовая фраза (пароль) для ssh-ключа
-
+POSTGRES_DB
+POSTGRES_USER
+POSTGRES_PASSWORD
 TELEGRAM_TO                    # id телеграм-аккаунта (можно узнать у @userinfobot, команда /start)
 TELEGRAM_TOKEN                 # токен бота (получить токен можно у @BotFather, /token, имя бота)
 ```
