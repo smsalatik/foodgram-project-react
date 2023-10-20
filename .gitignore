@@ -129,7 +129,3 @@ dmypy.json
 
 # .idea
 .idea
-
-/data/
-/infra/
-/backend/api/migrations/
